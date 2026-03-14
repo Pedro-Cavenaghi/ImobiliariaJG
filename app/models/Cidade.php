@@ -24,20 +24,27 @@ return $this->estado;
 }
 
 public function setID($id){
+    if ($this->id === null){
 $this->id = (int) $id;
+    }
+
 }
 
 public function setNome($nome){
     //simples validação
     if (!empty($nome)) {
-        $this->nome = $nome;
+      throw new Exception("O nome da cidade é obrigatório.");
     }
+    $this->nome = $nome;
 }
 
 public function setEstado($estado){
-    if (!empty($estado)) {
-        $this->estado = $estado;
-    }
+$estado = strtoupper(trim($estado));
+
+    if (strlen($estado) !== 2) {
+        throw new Exception("O estado deve conter extamente 2 letras.");
+    }       
+    $this->estado = $estado;
 }
 
 
