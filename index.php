@@ -1,22 +1,32 @@
 <?php
 
-require_once '../app/models/Cidade.php';
+// index.php será o ponto de entrada do sistema
 
-//criando objeto
-$cidade = new Cidade();
+require_once 'app/models/Cidade.php';   
+try{
+//Criando objeto
+$cidade = new Cidade("Itapira", "SP");
+$cidade->setId(1);
 
-//atribuindo valores diretamente
+echo "<h2> Dados da Cidade </h2>";
+echo "ID: " . $cidade->getId() . "<br>";
+echo "Nome: " . $cidade->getNome() . "<br>";    
+echo "Estado: " . $cidade->getEstado() . "<br>";    
+ } catch (Exception $e) {
+    echo "Erro: " . $e->getMessage();
+}
+
+// Atribuindo valores diretamente 
 $cidade->id = 1;
 $cidade->nome = "Itapira";
-$cidade->estado = "SP";
+$cidade->estado = 'SP';
+
 
 echo "<pre>";
+
 var_dump($cidade);
+
 echo "</pre>";
 
-
-// index.php será o ponto de entrada do sistema
-echo "<h1>Imobliaria JG</h1>";
-echo "<p>Projeto iniciado com sucesso</p>";
 
 ?>

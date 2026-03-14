@@ -1,9 +1,9 @@
 <?php
 
 class Cidade {
-    public $id;
-    public $nome;
-    public $estado;
+    private $id;
+    private $nome;
+    private $estado;
 
     public function __construct(string $nome, string $estado)
     {
@@ -32,7 +32,7 @@ $this->id = (int) $id;
 
 public function setNome($nome){
     //simples validação
-    if (!empty($nome)) {
+    if (empty($nome)) {
       throw new Exception("O nome da cidade é obrigatório.");
     }
     $this->nome = $nome;
